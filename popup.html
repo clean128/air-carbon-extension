@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Flight CO2 Comparator</title>
+  <meta charset="UTF-8">
+  <style>
+    body {
+      width: 300px;
+      padding: 15px;
+      font-family: Arial, sans-serif;
+    }
+    h2 {
+      margin-top: 0;
+      color: #2c3e50;
+    }
+    .option-group {
+      margin-bottom: 15px;
+    }
+    label {
+      display: block;
+      margin-bottom: 8px;
+    }
+    select, input[type="checkbox"] {
+      margin-left: 5px;
+    }
+    button {
+      background-color: #3498db;
+      color: white;
+      border: none;
+      padding: 8px 12px;
+      border-radius: 4px;
+      cursor: pointer;
+      display: block;
+      margin-top: 15px;
+    }
+    button:hover {
+      background-color: #2980b9;
+    }
+    .status {
+      margin-top: 10px;
+      padding: 5px;
+      border-radius: 4px;
+      text-align: center;
+      display: none;
+    }
+    .status.success {
+      background-color: #d4edda;
+      color: #155724;
+      display: block;
+    }
+    .status.error {
+      background-color: #f8d7da;
+      color: #721c24;
+      display: block;
+    }
+    .info {
+      font-size: 12px;
+      color: #6c757d;
+      margin-top: 15px;
+    }
+  </style>
+</head>
+<body>
+  <h2>Prix Écologique des Vols</h2>
+  
+  <div class="option-group">
+    <label>
+      Mode d'affichage:
+      <select id="displayMode">
+        <option value="append">Ajouter le CO₂</option>
+        <option value="replace">Remplacer les prix</option>
+      </select>
+    </label>
+  </div>
+  
+  <div class="option-group">
+    <label>
+      <input type="checkbox" id="showDetails" checked>
+      Afficher les détails (distance, avion)
+    </label>
+  </div>
+  
+  <div class="option-group">
+    <label>
+      <input type="checkbox" id="colorScale" checked>
+      Utiliser l'échelle de couleurs
+    </label>
+  </div>
+  
+  <div class="option-group">
+    <label>
+      Intervalle de rafraîchissement:
+      <select id="refreshInterval">
+        <option value="2000">Rapide (2s)</option>
+        <option value="3000" selected>Normal (3s)</option>
+        <option value="5000">Lent (5s)</option>
+      </select>
+    </label>
+  </div>
+  
+  <button id="saveButton">Enregistrer</button>
+  
+  <div id="status" class="status"></div>
+  
+  <div class="info">
+    Cette extension calcule les émissions de CO₂ approximatives pour chaque vol en utilisant la distance, le type d'appareil et son taux de remplissage estimé.
+  </div>
+  
+  <script src="popup.js"></script>
+</body>
+</html>

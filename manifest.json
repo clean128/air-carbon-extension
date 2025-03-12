@@ -1,0 +1,50 @@
+{
+    "name": "Prix Écologique des Vols",
+    "version": "1.1",
+    "manifest_version": 3,
+    "description": "Ajoute une estimation écologique aux vols sur Kayak et Opodo.",
+    "permissions": [
+      "storage",
+      "activeTab"
+    ],
+    "host_permissions": [
+        "*://*.kayak.com/*",
+        "*://*.opodo.fr/*",
+        "*://*.opodo.com/*",
+        "*://*.trip.com/*",
+        "*://*.airmilescalculator.com/*",
+        "*://*.flightradar24.com/*"
+    ],
+    "background": {
+      "service_worker": "background.js"
+    },
+    "content_scripts": [
+      {
+        "matches": [
+          "*://*.kayak.com/*", 
+          "*://*.opodo.fr/*",
+          "*://*.opodo.com/*"
+        ],
+        "js": ["content.js"],
+        "run_at": "document_idle"
+      }
+    ],
+    "web_accessible_resources": [
+      {
+        "resources": ["*.js"],
+        "matches": [
+          "*://*.kayak.com/*", 
+          "*://*.opodo.fr/*",
+          "*://*.opodo.com/*"
+        ]
+      }
+    ],
+    "action": {
+      "default_popup": "popup.html",
+      "default_icon": {
+        "16": "images/icon16.png",
+        "48": "images/icon48.png",
+        "128": "images/icon128.png"
+      }
+    }
+  }
